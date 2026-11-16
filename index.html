@@ -1,116 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>ShezMusic</title>
-
-<link rel="stylesheet" href="style.css">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShezMusic — Premium Music Experience</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-<!-- Sidebar -->
+  <!-- Ambient background lighting blob -->
+  <div class="ambient-glow"></div>
+  <div class="ambient-glow glow-2"></div>
 
-<div class="sidebar">
-
-    <h2>🎵 ShezMusic</h2>
-
-    <ul>
-        <li><i class="fa-solid fa-house"></i> Home</li>
-        <li><i class="fa-solid fa-heart"></i> Favorites</li>
-        <li><i class="fa-solid fa-list"></i> Playlist</li>
-        <li><i class="fa-solid fa-music"></i> Hindi</li>
-        <li><i class="fa-solid fa-globe"></i> English</li>
-        <li><i class="fa-solid fa-moon"></i> Lo-Fi</li>
-    </ul>
-
-</div>
-
-<!-- Main -->
-
-<div class="main">
-
-    <div class="topbar">
-
-        <input
-        type="text"
-        id="search"
-        placeholder="🔍 Search Songs...">
-
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">
+        <i class="fa-solid fa-wave-square"></i>
+      </div>
+      <h2>Shez<span>Music</span></h2>
     </div>
+
+    <nav class="nav-menu">
+      <span class="nav-section-title">Menu</span>
+      <ul>
+        <li class="active" data-filter="all"><i class="fa-solid fa-compass"></i> Discover</li>
+        <li data-filter="favorites"><i class="fa-solid fa-heart"></i> Favorites <span class="badge" id="favCount">0</span></li>
+        <li data-filter="playlist"><i class="fa-solid fa-compact-disc"></i> Top Tracks</li>
+      </ul>
+
+      <span class="nav-section-title">Genres</span>
+      <ul>
+        <li data-filter="Hindi"><i class="fa-solid fa-music"></i> Hindi Hits</li>
+        <li data-filter="English"><i class="fa-solid fa-globe"></i> International</li>
+        <li data-filter="Lo-Fi"><i class="fa-solid fa-moon"></i> Lo-Fi Chill</li>
+        <li data-filter="Bhojpuri"><i class="fa-solid fa-fire"></i> Desi Beats</li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-chip">
+        <div class="user-avatar">S</div>
+        <div class="user-details">
+          <h4>Sheezan</h4>
+          <span>Premium User</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="main">
+    <!-- Top Bar -->
+    <header class="topbar">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="search" placeholder="Search by song title, artist, or genre...">
+        <button id="clearSearch" class="clear-btn" style="display:none;"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="topbar-actions">
+        <div class="genre-chips" id="genreChips">
+          <button class="chip active" data-genre="all">All</button>
+          <button class="chip" data-genre="Hindi">Hindi</button>
+          <button class="chip" data-genre="English">English</button>
+          <button class="chip" data-genre="Lo-Fi">Lo-Fi</button>
+          <button class="chip" data-genre="Bhojpuri">Desi</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Banner / Featured -->
+    <section class="hero-banner">
+      <div class="banner-content">
+        <span class="banner-tag"><i class="fa-solid fa-bolt"></i> TRENDING PLAYLIST</span>
+        <h1 id="bannerTitle">Unwind & Experience Pure Sound</h1>
+        <p>Curated high-fidelity soundscapes and top trending tracks across Hindi, Lo-Fi, and Global charts.</p>
+        <div class="banner-buttons">
+          <button class="btn-play-all" id="playAllBtn"><i class="fa-solid fa-play"></i> Play All</button>
+          <button class="btn-shuffle" id="shuffleBtn"><i class="fa-solid fa-shuffle"></i> Shuffle</button>
+        </div>
+      </div>
+      <div class="banner-visual">
+        <div class="visual-disk" id="bannerDisk">
+          <img src="covers/pawan.jpg" id="bannerImg" alt="Banner Cover">
+        </div>
+      </div>
+    </section>
+
+    <!-- Song Section -->
+    <section class="section-title-wrap">
+      <h2 id="currentSectionTitle">Trending Tracks</h2>
+      <span id="trackCount" class="track-count">8 Tracks</span>
+    </section>
 
     <div class="song-list" id="songList">
+      <!-- Generated via JS -->
+    </div>
+  </main>
 
+  <!-- Bottom Player Bar -->
+  <footer class="player">
+    <div class="player-left">
+      <div class="cover-wrap">
+        <img id="cover" src="covers/pawan.jpg" alt="Cover">
+        <div class="equalizer-bars" id="eqBars">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="song-info">
+        <h3 id="title">No Song Selected</h3>
+        <p id="artist">Select a track to start playing</p>
+      </div>
+      <button class="fav-toggle-btn" id="favBtn" title="Add to Favorites">
+        <i class="fa-regular fa-heart"></i>
+      </button>
     </div>
 
-</div>
+    <div class="player-center">
+      <div class="controls">
+        <button id="shuffleMode" class="btn-tool" title="Shuffle"><i class="fa-solid fa-shuffle"></i></button>
+        <button id="prev" class="btn-control" title="Previous"><i class="fa-solid fa-backward-step"></i></button>
+        <button id="play" class="btn-play-main" title="Play/Pause"><i class="fa-solid fa-play"></i></button>
+        <button id="next" class="btn-control" title="Next"><i class="fa-solid fa-forward-step"></i></button>
+        <button id="repeatMode" class="btn-tool" title="Repeat"><i class="fa-solid fa-repeat"></i></button>
+      </div>
 
-<!-- Player -->
-
-<div class="player">
-
-    <img id="cover"
-    src="covers/pawan.jpg"
-    alt="Cover">
-
-    <div class="song-info">
-
-        <h3 id="title">No Song Selected</h3>
-
-        <p id="artist">
-            Select a song to play
-        </p>
-
+      <div class="progress-container">
+        <span id="currentTime">0:00</span>
+        <div class="progress-bar-wrapper" id="progressWrapper">
+          <input type="range" id="progress" value="0" min="0" max="100">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <span id="duration">0:00</span>
+      </div>
     </div>
 
     <div class="player-right">
-
-        <div class="controls">
-
-            <button id="prev">
-                <i class="fa-solid fa-backward-step"></i>
-            </button>
-
-            <button id="play">
-                <i class="fa-solid fa-play"></i>
-            </button>
-
-            <button id="next">
-                <i class="fa-solid fa-forward-step"></i>
-            </button>
-
-        </div>
-
-        <div class="progress-container">
-
-            <span id="currentTime">0:00</span>
-
-            <input
-            type="range"
-            id="progress"
-            value="0"
-            min="0"
-            max="100">
-
-            <span id="duration">0:00</span>
-
-        </div>
-
+      <div class="volume-control">
+        <button id="volIcon" class="vol-btn"><i class="fa-solid fa-volume-high"></i></button>
+        <input type="range" id="volume" min="0" max="100" value="80">
+      </div>
     </div>
 
     <audio id="audio"></audio>
+  </footer>
 
-</div>
-
-<script src="songs.js"></script>
-<script src="script.js"></script>
-
+  <script src="songs.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
