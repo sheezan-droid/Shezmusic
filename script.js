@@ -65,13 +65,13 @@ function renderSongs(songsToRender) {
 
     const card = document.createElement("div");
     card.className = `song-card ${isCurrentPlaying ? "playing" : ""}`;
-    card.onclick = () => playSong(realIndex);
+    card.onclick = () => handleCardClick(realIndex);
 
     card.innerHTML = `
       <div class="card-img-wrap">
         <img src="${song.cover}" alt="${song.title}">
         <span class="card-badge">${song.category || 'Pop'}</span>
-        <div class="card-play-overlay">
+        <div class="card-play-overlay" onclick="handleCardClick(event, ${realIndex})">
           <i class="fa-solid ${isCurrentPlaying ? 'fa-pause' : 'fa-play'}"></i>
         </div>
       </div>
@@ -92,6 +92,25 @@ function renderSongs(songsToRender) {
 
 // Initial render
 renderSongs(songs);
+
+// Card click handler (Toggle play/pause if already active)
+function handleCardClick(eOrIndex, maybeIndex) {
+  let index;
+  if (typeof eOrIndex === 'object' && eOrIndex !== null && 'stopPropagation' in eOrIndex) {
+    eOrIndex.stopPropagation();
+    index = maybeIndex;
+  } else {
+    index = eOrIndex;
+  }
+
+  if (currentSongIndex === index && isPlaying) {
+    togglePlay(); // Pause it!
+  } else if (currentSongIndex === index && !isPlaying) {
+    togglePlay(); // Resume it!
+  } else {
+    playSong(index); // Play new song!
+  }
+}
 
 // Play Song Function
 function playSong(index) {
