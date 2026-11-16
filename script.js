@@ -69,7 +69,7 @@ function renderSongs(songsToRender) {
 
     card.innerHTML = `
       <div class="card-img-wrap">
-        <img src="${song.cover}" alt="${song.title}">
+        <img src="${song.cover}" alt="${song.title}" onerror="this.src='https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&h=400&fit=crop'">
         <span class="card-badge">${song.category || 'Pop'}</span>
         <div class="card-play-overlay" onclick="handleCardClick(event, ${realIndex})">
           <i class="fa-solid ${isCurrentPlaying ? 'fa-pause' : 'fa-play'}"></i>

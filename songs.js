@@ -49,7 +49,7 @@ const songs = [
     title: "Starboy Echoes",
     artist: "Daft Punk & Weekend",
     category: "English",
-    cover: "https://images.unsplash.com/photo-1445985543470-41fdd6ce388d?w=400&h=400&fit=crop",
+    cover: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&h=400&fit=crop",
     file: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
     duration: "6:42"
   },
